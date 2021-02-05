@@ -4,6 +4,7 @@ const mongoDb = require("../mongodb_models");
 var path = require("path");
 var login;
 var uniqueUserId;
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 // const cardsController = require("../controllers/cardsController");
 // var login = require("assets/js/app3.js");
 
@@ -27,7 +28,7 @@ module.exports = function (app) {
     })
 
     // To retrive all donator and requestor cards from database
-    app.get("/:id", function (req, res) {
+    app.get("/:id", isAuthenticated, function (req, res) {
         console.log("Inside user login");
         console.log("ID");
         console.log(req.params.id);
