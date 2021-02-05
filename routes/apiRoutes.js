@@ -58,13 +58,13 @@ module.exports = function (app) {
                     console.log("MERGING RESULT OBJECTS");
                     console.log(resultObj);
 
-                    if (login && req.params.id === uniqueUserId) {
-                        console.log(uniqueUserId);
+                    // if (login && req.params.id === uniqueUserId) {
+                    //     console.log(uniqueUserId);
                         res.render("index", resultObj);
-                    }
-                    else {
-                        console.log("Please Login First");
-                    }
+                    // }
+                    // else {
+                    //     console.log("Please Login First");
+                    // }
                 })
             })
         });
