@@ -18,8 +18,8 @@ module.exports = function (app) {
     req.logout();
     req.session.destroy(function (err) {
       if (!err) {
-        res.status(200).clearCookie('connect.sid', { path: '/' }).json({ status: "Success" });
-        res.redirect("/");
+        res.status(200).clearCookie('connect.sid', { path: '/' }).redirect("/");
+        // res.redirect("/");
       } else {
         // handle error case...
       }
