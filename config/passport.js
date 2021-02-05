@@ -7,13 +7,14 @@ passport.use(new LocalStrategy(
     usernameField: "username"
   },
   function (username, password, done) {
+    console.log(username);
     db.User.findOne({
       where: {
         username: username
       }
     }).then(function (dbUser) {
       if (!dbUser) {
-        return done(null, false {
+        return done(null, false, {
           message: "Incorrect username!"
         });
       }
