@@ -39,6 +39,8 @@ module.exports = function (app) {
     console.log("Inside user login");
     console.log("ID");
     console.log(req.params.id);
+    console.log("uuid", uniqueUserId, typeof uniqueUserId);
+    console.log("reqid", req.user.id, typeof req.user.id);
 
     db.RequestorCard.findAll({
       where: {
@@ -66,13 +68,14 @@ module.exports = function (app) {
           console.log("MERGING RESULT OBJECTS");
           console.log(resultObj);
 
-          // if (login && req.params.id === uniqueUserId) {
-          //     console.log(uniqueUserId);
-          res.render("index", resultObj);
-          // }
-          // else {
-          //     console.log("Please Login First");
-          // }
+          var id = req.params.id ? parseInt(req.params.id) : parseInt(uniqueUserId);
+          if (id === req.user.id) {
+            console.log(uniqueUserId);
+            res.render("index", resultObj);
+          }
+          else {
+            res.redirect("/");
+          }
         })
       })
     });

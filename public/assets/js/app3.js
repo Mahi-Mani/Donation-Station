@@ -21,12 +21,13 @@ $(document).ready(function () {
     }).then(function (user) {
       console.log(user);
       var uniqueUserId = user.id;
-      window.location.href = "/" + uniqueUserId;
-      // $.ajax("/login/" + uniqueUserId, {
-      //   type: "GET"
-      // }).then(function (result) {
-      //   console.log(login);
-      // })
+      
+      $.ajax("/login/" + uniqueUserId, {
+        type: "GET"
+      }).then(function (result) {
+        console.log(login);
+        window.location.href = "/" + uniqueUserId;
+      })
     })
   }
 
